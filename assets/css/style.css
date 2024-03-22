@@ -1,0 +1,27 @@
+.figth--area {
+    display: flex;
+    gap: 20px;
+}
+
+#character, #monter {
+    flex: 1;
+}
+
+.lifebar {
+    height: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.lifebar .bar {
+    height: inherit;
+    border-radius: inherit;
+    background-color: red;
+    
+}
+
+.log {
+    height: 200px;
+    overflow-y: scroll;
+    border: 5px dotted #ccc;
+}
