@@ -81,47 +81,16 @@ class Character {
 
 
 
-class Knight extends Character {
-
-    constructor(name){
-
-        let job = "KNIGHT";
-        super(name, 100, 10, 8, job);
-        
-    }
-
-}
 
 
 
-class Mage extends Character {
-    
-    constructor(name){
-
-        let job = "MAGE";
-        super(name, 80, 15, 5, job);
-    }
-}
 
 
 
-class Slime extends Character {
-    
-    constructor(name){
-
-        const job = "ENIMIE";
-        super(name, 40, 10, 8, job);
-    }
-}
 
 
 
-class Goblin extends Character {
 
-    constructor(name){
 
-        const job = "ENIMIE";
-        super(name, 60, 10, 8, job);
-    }
-}
+
 

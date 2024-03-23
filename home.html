@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FITGH</title>
+    <title>D&D BATTLE</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="shortcut icon" href="assets/images/icon.png">
 
@@ -15,47 +15,155 @@
 </head>
 
 <body>
-    <div class="figth--area">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="assets/images/icon.png" />
+            </div>
+            <menu>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Characters</a></li>
+                    <li><a href="">Arena</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </menu>
+        </div>
+    </header>
 
-        <div id="character">
+    <section class=" banner">
+        <div class="container">
 
-            <div class="lifebar">
+            <div class="content">
+                <h1>Dungeons and Dragons</h1>
+                <h2>Batttle Project</h2>
+            </div>
+        </div>
+    </section>
 
-                <div class="bar" style="width: 10%;">
+    <section class="characters">
+
+        <div class="title">
+            <h1>Characters</h1>
+        </div>
+
+        <div class="container">
+            <div class="content">
+                Fighter
+                Ranger
+                Wizard
+            </div>
+        </div>
+    </section>
+
+    <section class="arena">
+
+        <div class="container">
+
+            <div class="title">
+                <h1>ARENA</h1>
+            </div>
+
+            <div class="content">
+                <div id="character01">
+
+                    <div class="life-area">
+                        <div class="lifebar">
+
+                            <div class="bar" style="width: 10%;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="img-area">
+
+                        <img src="assets/images/fighter.png" />
+
+                        <h1 class="name">Fighter</h1>
+
+                        <div>
+                            <button class="button">ATACAR</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div id="character02">
+
+                    <div class="life-area">
+                        <div class="lifebar">
+
+                            <div class="bar" style="width: 10%;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="img-area">
+
+                        <img src="assets/images/wizard.png" />
+
+                        <h1 class="name">Wizard</h1>
+
+                        <div>
+                            <button class="button">ATACAR</button>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
-            <strong class="name">---</strong>
 
-            <div>
-                <button class="button--atack">ATACAR</button>
-            </div>
         </div>
 
-        <div id="monter">
 
-            <div class="lifebar">
+    </section>
 
-                <div class="bar" style="width: 10%;">
+
+    <section class="log">
+        <div class="container">
+            <div class="title">
+                <h1>Log Area</h1>
+            </div>
+            <ul>
+                ...
+            </ul>
+        </div>
+    </section>
+
+    <section class="about">
+
+        <div class="container">
+
+            <div class="title">
+                <h1>About</h1>
+            </div>
+
+            <div class="content">
+                <div class="text">
+                    <p>
+                        ...
+                    </p>
+                </div>
+
+                <div class="video">
+                    ...
                 </div>
             </div>
-
-            <strong class="name">---</strong>
-
-            <div>
-                <button class="button--atack">ATACAR</button>
-            </div>
         </div>
-
-    </div>
-    <ul class="log">
-
-    </ul>
+    </section>
 
 
+    <script src="assets/javascript/classes/ENUMS/CHARACTER.js"></script>
+    <script src="assets/javascript/classes/Character.js"></script>
 
-    <script src="assets/javascript/classes.js"></script>
-    <script src="assets/javascript/script.js" ></script>
+    <script src="assets/javascript/classes/Knight.js"></script>
+    <script src="assets/javascript/classes/Mage.js"></script>
+    <script src="assets/javascript/classes/Slime.js"></script>
+    <script src="assets/javascript/classes/Goblin.js"></script>
+
+    <script src="assets/javascript/script.js"></script>
 
 
 </body>

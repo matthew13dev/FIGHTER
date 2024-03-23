@@ -1,27 +1,219 @@
-.figth--area {
-    display: flex;
-    gap: 20px;
+body {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+
+    font-family: "Inter", sans-serif;
+    
 }
 
-#character, #monter {
+section {
+    padding: 30px 0px;
+}
+
+.container {
+    max-width: 1140px;
+    margin: auto;
+}
+
+.button {
+    width: 120px;
+    height: 40px;
+
+    background-color: #ccc;
+    border: 0;
+
+    transition: all 0.05s linear;
+}
+
+.button:hover {
+    background-color: #999;
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+header a {
+    font-style: none;
+    color: #000;
+    text-decoration: none;
+    display: block;
+    border-bottom: 5px solid transparent;
+    transition: all 0.05s linear;
+
+    padding: 20px;
+}
+header a:hover {
+    border-bottom: 5px solid transparent;
+    border-color: red;
+}
+ul , li {
+    list-style: none;
+}
+
+ul li {
+
+}
+header menu ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .container {
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+header menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .logo img {
+    width: 100px;
+}
+
+.container menu {
     flex: 1;
+    justify-content: end;
+}
+
+.banner {
+    background-image: url("../images/banner01.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 620px;
+}
+.banner .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+
+    height: inherit;
+    text-align: center;
+}
+
+.banner .content h1 {
+    font-size: 50px ;
+}
+
+.study {
+    height: 400px;
+}
+
+.arena {
+    background-image: url("../images/banner03.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+
+    padding-bottom: 50px;
+    color: #fff;
+}
+
+
+
+.arena .content {
+   display: flex;
+   gap: 100px;
+   justify-content: center;
+}
+
+#character01,
+#character02 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    max-width: 300px;
+
+    background-color: #fff;
+    color: #000;
+
+    border-radius: 15px;
+}
+
+.life-area {
+    display: flex;
+
 }
 
 .lifebar {
+    width: 80%;
     height: 10px;
     border: 1px solid #000;
     border-radius: 5px;
+
+    margin: 20px;
+    flex: 1;
 }
 
 .lifebar .bar {
     height: inherit;
     border-radius: inherit;
     background-color: red;
-    
+
+}
+
+.img-area {
+    flex: 1;
+    width: 100%;
+    height: auto;
+    margin: 30px 0px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.img-area img {
+    max-height: 300px;
+}
+
+strong {
+    margin: 10px;
 }
 
 .log {
+    
+}
+.log ul{
     height: 200px;
     overflow-y: scroll;
+    background-color: #fff;
     border: 5px dotted #ccc;
+}
+
+.characters {
+    height: 400px;
+}
+
+.about {
+    background-image: url("../images/banner02.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 620px;
+
+    padding-bottom: 50px;
+    color: #fff;
 }
