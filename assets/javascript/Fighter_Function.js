@@ -1,0 +1,185 @@
+const CHARACTERS = Object.freeze({
+    KNIGHT: "KNIGHT",
+    WIZARD: "WIZARD",
+    RANGER: "RANGER",
+    DEFAULT: "DEFAULT"
+
+});
+
+const KNIGHT = Object.freeze({
+    LIFE: 90,
+    ATTACK: 10,
+    DEFENSE: 10
+})
+
+const WIZARD = Object.freeze({
+    LIFE: 70,
+    ATTACK: 15,
+    DEFENSE: 5
+})
+
+const RANGER = Object.freeze({
+    LIFE: 70,
+    ATTACK: 12,
+    DEFENSE: 8
+})
+
+const Default_Character = {
+    name: "",
+    maxLife: 1,
+    life: 1,
+    job: CHARACTERS.DEFAULT,
+    attack: 0,
+    defense: 0,
+}
+
+const create_Knight = function (name) {
+    return {
+        ...Default_Character,
+        name,
+        maxLife: KNIGHT.LIFE,
+        life: KNIGHT.LIFE,
+        job: CHARACTERS.KNIGHT,
+        attack: KNIGHT.ATTACK,
+        defense: KNIGHT.DEFENSE
+    }
+}
+
+const create_Wizard = function (name) {
+    return {
+        ...Default_Character,
+        name,
+        maxLife: WIZARD.LIFE,
+        life: WIZARD.LIFE,
+        job: CHARACTERS.WIZARD,
+        attack: WIZARD.ATTACK,
+        defense: WIZARD.DEFENSE
+    }
+}
+
+const create_Ranger = function (name) {
+    return {
+        ...Default_Character,
+        name,
+        maxLife: RANGER.LIFE,
+        life: RANGER.LIFE,
+        job: CHARACTERS.RANGER,
+        attack: RANGER.ATTACK,
+        defense: RANGER.DEFENSE
+    }
+}
+
+const stage = {
+
+    char01: null,
+    char02: null,
+    char01_Element: null,
+    char02_Element: null,
+
+    start(char01, char02, char01_Element, char02_Element) {
+        this.char01 = char01;
+        this.char02 = char02;
+        this.char01_Element = char01_Element;
+        this.char02_Element = char02_Element;
+
+        this.char01_Element.querySelector(".attackButton").addEventListener("click", () => this.doAttack(this.char01, this.char02));
+        this.char02_Element.querySelector(".attackButton").addEventListener("click", () => this.doAttack(this.char02, this.char01));
+
+        this.update();
+    },
+
+    update() {
+
+        // Character 01
+
+            let char01_Name_Element = this.char01_Element.querySelector(".name");
+            let char01_Name_Text = this.char01.name + ": " + this.char01.life + "HP";
+
+            char01_Name_Element.innerHTML = char01_Name_Text;
+
+            let char01_Life_Element = this.char01_Element.querySelector(".life");
+            let char01_Life_Value = (this.char01.life / this.char01.maxLife) * 100;
+
+            char01_Life_Element.style.width = char01_Life_Value + "%";
+
+
+        // Character 02
+
+            let char02_Name_Element = this.char02_Element.querySelector(".name");
+            let char02_Name_text = this.char02.name + ": " + this.char02.life + "HP";
+
+            char02_Name_Element.innerHTML = char02_Name_text;
+
+            let char02_Life_Element = this.char02_Element.querySelector(".life");
+            let char02_Life_Value = (this.char02.life / this.char02.maxLife) * 100;
+
+            char02_Life_Element.style.width = char02_Life_Value + "%";
+    },
+
+    doAttack(aggressor, assault) {
+
+        let dice = 21;
+
+        let aggressor_Dice = Math.floor(Math.random() * dice);
+        let assault_Dice = Math.floor(Math.random() * dice);
+
+
+        let real_Attack = aggressor.attack + aggressor_Dice;
+        let real_Defense = assault.defense + assault_Dice;
+
+        let damage = real_Attack - real_Defense;
+        let contra_Attack = assault.attack;
+
+
+        validation = aggressor.life <= 0 || assault.life <= 0;
+        if (validation) {
+
+            if(aggressor.life == 0){
+                console.log("Morto não ataca kkkkk");
+            }
+            
+            if(assault.life == 0){
+                console.log("atacando cachorro morto kkkkk");
+            }
+            
+            
+        }
+        else {
+
+            let title = aggressor.name + " Dice: " + aggressor_Dice + " | " + assault.name + " Dice: " + assault_Dice + "\n-------------------------------------------\n";
+
+            if (damage > 0) {
+
+                if(damage >= assault.life){
+                    assault.life = 0;
+                }
+                else {
+                    assault.life = assault.life - damage;
+                }
+
+                
+    
+                let aggressor_Text = aggressor.name + " Attack: " + aggressor.attack + " + " + aggressor_Dice + " = " + real_Attack + "\n";
+                let assault_Text = assault.name + " Defense: " + assault.defense + " + " + assault_Dice + " = " + real_Defense + "\n";
+    
+                console.log(title + aggressor_Text + assault_Text +"Real damage: " + damage + "\n-------------------------------------------");
+            }
+            else {
+    
+                if(contra_Attack >= aggressor.life){
+                    aggressor.life = 0;
+                }
+                else {
+                    aggressor.life = aggressor.life - contra_Attack;
+                }
+
+                let text = aggressor.name + " sofreu um contra atacaque:\n" + assault.name + " attack: " + contra_Attack + "\n-------------------------------------------";
+                console.log(title + text);
+            }
+        }
+
+        
+
+        this.update();
+    }
+}
