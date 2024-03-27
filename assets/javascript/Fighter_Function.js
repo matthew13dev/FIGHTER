@@ -92,36 +92,37 @@ const stage = {
 
         // Character 01
 
-            let char01_Name_Element = this.char01_Element.querySelector(".name");
-            let char01_Name_Text = this.char01.name + ": " + this.char01.life + "HP";
+        let char01_Name_Element = this.char01_Element.querySelector(".name");
+        let char01_Name_Text = this.char01.name + ": " + this.char01.life + "HP";
 
-            char01_Name_Element.innerHTML = char01_Name_Text;
+        char01_Name_Element.innerHTML = char01_Name_Text;
 
-            let char01_Life_Element = this.char01_Element.querySelector(".life");
-            let char01_Life_Value = (this.char01.life / this.char01.maxLife) * 100;
+        let char01_Life_Element = this.char01_Element.querySelector(".life");
+        let char01_Life_Value = (this.char01.life / this.char01.maxLife) * 100;
 
-            char01_Life_Element.style.width = char01_Life_Value + "%";
+        char01_Life_Element.style.width = char01_Life_Value + "%";
 
 
         // Character 02
 
-            let char02_Name_Element = this.char02_Element.querySelector(".name");
-            let char02_Name_text = this.char02.name + ": " + this.char02.life + "HP";
+        let char02_Name_Element = this.char02_Element.querySelector(".name");
+        let char02_Name_text = this.char02.name + ": " + this.char02.life + "HP";
 
-            char02_Name_Element.innerHTML = char02_Name_text;
+        char02_Name_Element.innerHTML = char02_Name_text;
 
-            let char02_Life_Element = this.char02_Element.querySelector(".life");
-            let char02_Life_Value = (this.char02.life / this.char02.maxLife) * 100;
+        let char02_Life_Element = this.char02_Element.querySelector(".life");
+        let char02_Life_Value = (this.char02.life / this.char02.maxLife) * 100;
 
-            char02_Life_Element.style.width = char02_Life_Value + "%";
+        char02_Life_Element.style.width = char02_Life_Value + "%";
     },
 
     doAttack(aggressor, assault) {
 
-        let dice = 21;
+        let dice01 = 21;
+        let dice02 = 13
 
-        let aggressor_Dice = Math.floor(Math.random() * dice);
-        let assault_Dice = Math.floor(Math.random() * dice);
+        let aggressor_Dice = Math.floor(Math.random() * dice01);
+        let assault_Dice = Math.floor(Math.random() * dice02);
 
 
         let real_Attack = aggressor.attack + aggressor_Dice;
@@ -134,52 +135,66 @@ const stage = {
         validation = aggressor.life <= 0 || assault.life <= 0;
         if (validation) {
 
-            if(aggressor.life == 0){
-                console.log("Morto não ataca kkkkk");
+            if (aggressor.life == 0) {
+                log.addMenssage("Morto não ataca kkkkk");
             }
-            
-            if(assault.life == 0){
-                console.log("atacando cachorro morto kkkkk");
+
+            if (assault.life == 0) {
+                log.addMenssage("atacando cachorro morto kkkkk");
             }
-            
-            
+
+
         }
         else {
 
-            let title = aggressor.name + " Dice: " + aggressor_Dice + " | " + assault.name + " Dice: " + assault_Dice + "\n-------------------------------------------\n";
+            let title = aggressor.name + " Dice: " + aggressor_Dice + " | " + assault.name + " Dice: " + assault_Dice;
 
             if (damage > 0) {
 
-                if(damage >= assault.life){
+                if (damage >= assault.life) {
                     assault.life = 0;
                 }
                 else {
                     assault.life = assault.life - damage;
                 }
 
-                
-    
-                let aggressor_Text = aggressor.name + " Attack: " + aggressor.attack + " + " + aggressor_Dice + " = " + real_Attack + "\n";
-                let assault_Text = assault.name + " Defense: " + assault.defense + " + " + assault_Dice + " = " + real_Defense + "\n";
-    
-                console.log(title + aggressor_Text + assault_Text +"Real damage: " + damage + "\n-------------------------------------------");
+
+                log.addMenssage(aggressor.name + " atacou " + assault.name + ": " + damage + " ATK - " + title);
             }
             else {
-    
-                if(contra_Attack >= aggressor.life){
+
+                if (contra_Attack >= aggressor.life) {
                     aggressor.life = 0;
                 }
                 else {
                     aggressor.life = aggressor.life - contra_Attack;
                 }
 
-                let text = aggressor.name + " sofreu um contra atacaque:\n" + assault.name + " attack: " + contra_Attack + "\n-------------------------------------------";
-                console.log(title + text);
+                log.addMenssage(assault.name + " contra atacou " + aggressor.name + ": " + contra_Attack + " ATK - " + title);
             }
         }
 
-        
+
 
         this.update();
+    }
+}
+
+const log = {
+
+    list: [],
+    addMenssage(mensage) {
+        this.list.push(mensage);
+        this.render();
+    },
+    render() {
+        let list_Element = document.querySelector(".log ul");
+        list_Element.innerHTML = "";
+
+        for (let i = 0; i < this.list.length; i++) {
+
+            let newItem = "<li>" + this.list[i] + "</li>";
+            list_Element.innerHTML = list_Element.innerHTML + newItem;
+        }
     }
 }
